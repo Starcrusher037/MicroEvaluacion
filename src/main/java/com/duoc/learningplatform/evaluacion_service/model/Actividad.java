@@ -23,7 +23,7 @@ public class Actividad {
     private Long cursoId;
 
     @NotBlank
-    private String nombre; // Ej: "Prueba 1", "Tarea 2"
+    private String nombre; // Ej:"Prueba 1"
 
     private String descripcion;
 

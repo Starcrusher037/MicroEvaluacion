@@ -19,16 +19,13 @@ public class EvaluacionService {
         this.courseClient = courseClient;
     }
 
-    // Crear evaluación (calificación del profesor)
+    // Crear evaluación 
     public Evaluacion crearEvaluacion(Evaluacion evaluacion) {
-
-        // 🔗 VALIDACIÓN (opcional pero recomendable)
         Boolean existeCurso = courseClient.existsCourseById(evaluacion.getActividadId());
 
         if (existeCurso == null || !existeCurso) {
             throw new RuntimeException("El curso asociado no existe");
         }
-
         return evaluacionRepository.save(evaluacion);
     }
 

@@ -26,7 +26,7 @@ public class Evaluacion {
     @NotNull
     private Long alumnoId;
 
-    // profesor que evalúa (opcional pero recomendado)
+    // profesor que evalúa 
     @NotNull
     private Long profesorId;
 
