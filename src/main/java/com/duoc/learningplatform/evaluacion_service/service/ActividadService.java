@@ -1,6 +1,7 @@
 package com.duoc.learningplatform.evaluacion_service.service;
 
 import com.duoc.learningplatform.evaluacion_service.client.CourseClient;
+import com.duoc.learningplatform.evaluacion_service.exception.NotFoundException;
 import com.duoc.learningplatform.evaluacion_service.model.Actividad;
 import com.duoc.learningplatform.evaluacion_service.repository.ActividadRepository;
 import org.springframework.stereotype.Service;
@@ -19,36 +20,34 @@ public class ActividadService {
         this.courseClient = courseClient;
     }
 
-    // Crear actividad (tarea/examen)
     public Actividad crearActividad(Actividad actividad) {
 
         Boolean existeCurso = courseClient.existsCourseById(actividad.getCursoId());
 
         if (existeCurso == null || !existeCurso) {
-            throw new RuntimeException("El curso no existe en course-service");
+            throw new NotFoundException("El curso no existe");
         }
 
         return actividadRepository.save(actividad);
     }
 
-    // Listar todas las actividades
     public List<Actividad> listarActividades() {
         return actividadRepository.findAll();
     }
 
-    // Buscar por ID
     public Actividad buscarPorId(Long id) {
         return actividadRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Actividad no encontrada"));
+                .orElseThrow(() -> new NotFoundException("Actividad no encontrada"));
     }
 
-    // Listar por curso
     public List<Actividad> listarPorCurso(Long cursoId) {
         return actividadRepository.findByCursoId(cursoId);
     }
 
-    // Eliminar actividad
     public void eliminarActividad(Long id) {
+        if (!actividadRepository.existsById(id)) {
+            throw new NotFoundException("Actividad no encontrada");
+        }
         actividadRepository.deleteById(id);
     }
 }

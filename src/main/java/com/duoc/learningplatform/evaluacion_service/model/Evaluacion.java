@@ -18,17 +18,11 @@ public class Evaluacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // referencia a la actividad (tarea/examen)
     @NotNull
     private Long actividadId;
 
-    // alumno evaluado (viene de auth-service)
     @NotNull
     private Long alumnoId;
-
-    // profesor que evalúa 
-    @NotNull
-    private Long profesorId;
 
     @PositiveOrZero
     private Double nota;
@@ -36,5 +30,7 @@ public class Evaluacion {
     private String comentarioProfesor;
 
     @NotNull
+    private LocalDate fechaEntrega;
+
     private LocalDate fechaEvaluacion;
 }

@@ -2,22 +2,23 @@ package com.duoc.learningplatform.evaluacion_service.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDateTime;
 import java.util.Map;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<?> handleNotFound(ResourceNotFoundException ex) {
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<?> handleNotFound(NotFoundException ex) {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                 Map.of(
                         "timestamp", LocalDateTime.now(),
                         "error", "NOT_FOUND",
-                        "message", ex.getMessage()
+                        "mensaje", ex.getMessage()
                 )
         );
     }
@@ -29,7 +30,7 @@ public class GlobalExceptionHandler {
                 Map.of(
                         "timestamp", LocalDateTime.now(),
                         "error", "BAD_REQUEST",
-                        "message", ex.getMessage()
+                        "mensaje", ex.getMessage()
                 )
         );
     }
@@ -41,7 +42,7 @@ public class GlobalExceptionHandler {
                 Map.of(
                         "timestamp", LocalDateTime.now(),
                         "error", "INTERNAL_ERROR",
-                        "message", ex.getMessage()
+                        "mensaje", ex.getMessage()
                 )
         );
     }

@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface ActividadRepository extends JpaRepository<Actividad, Long> {
 
-    // listar actividades por curso
     List<Actividad> findByCursoId(Long cursoId);
+
+    boolean existsByNombreAndCursoId(String nombre, Long cursoId);
 }

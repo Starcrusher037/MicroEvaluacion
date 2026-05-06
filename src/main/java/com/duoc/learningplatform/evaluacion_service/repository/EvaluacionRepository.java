@@ -15,6 +15,4 @@ public interface EvaluacionRepository extends JpaRepository<Evaluacion, Long> {
     // evaluaciones por alumno
     List<Evaluacion> findByAlumnoId(Long alumnoId);
 
-    // evaluaciones por profesor
-    List<Evaluacion> findByProfesorId(Long profesorId);
 }

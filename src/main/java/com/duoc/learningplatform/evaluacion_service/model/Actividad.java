@@ -18,12 +18,11 @@ public class Actividad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // referencia al curso (microservicio externo)
     @NotNull
     private Long cursoId;
 
     @NotBlank
-    private String nombre; // Ej:"Prueba 1"
+    private String nombre;
 
     private String descripcion;
 
@@ -32,4 +31,7 @@ public class Actividad {
 
     @NotNull
     private LocalDate fechaEntrega;
+
+    @NotNull
+    private Long profesorId;
 }
