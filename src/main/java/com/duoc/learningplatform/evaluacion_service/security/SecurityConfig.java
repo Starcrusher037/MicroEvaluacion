@@ -31,10 +31,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE, "/api/actividades/**").hasRole("PROFESOR")
 
                 // EVALUACIONES
-                .requestMatchers(HttpMethod.POST, "/api/evaluaciones/**").hasRole("PROFESOR")
+                .requestMatchers(HttpMethod.POST, "/api/evaluaciones/**").hasRole("ALUMNO")
 
-                //OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO
-                //ESTE ES EL ERROR ESTA PERMITIENDO PROFESORES PERO DEBE PERMITIR A ALUMNOS  RCEAR LA EVALUACION
                 .requestMatchers(HttpMethod.PUT, "/api/evaluaciones/**").hasRole("PROFESOR")
 
                 // CONSULTAS (AMBOS ROLES)
