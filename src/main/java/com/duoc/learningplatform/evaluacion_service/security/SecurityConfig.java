@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE, "/api/actividades/**").hasRole("PROFESOR")
 
                 // EVALUACIONES
-                .requestMatchers(HttpMethod.POST, "/api/evaluaciones/**").hasRole("ALUMNO")
+                .requestMatchers(HttpMethod.POST, "/api/evaluaciones").hasRole("ALUMNO")
 
                 .requestMatchers(HttpMethod.PUT, "/api/evaluaciones/**").hasRole("PROFESOR")
 

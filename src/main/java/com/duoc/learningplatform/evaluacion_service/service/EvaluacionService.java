@@ -25,9 +25,7 @@ public class EvaluacionService {
         this.actividadRepository = actividadRepository;
     }
 
-    public Evaluacion crearEvaluacion(
-            CrearEvaluacionRequest request,
-            Long alumnoId) {
+    public Evaluacion crearEvaluacion(CrearEvaluacionRequest request,Long alumnoId) {
 
         Actividad actividad = actividadRepository.findById(request.getActividadId())
                 .orElseThrow(() -> new NotFoundException("Actividad no existe"));
